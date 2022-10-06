@@ -158,8 +158,9 @@ auto main() -> int
 
 		primeImpl.row.erase(std::unique(primeImpl.row.begin(), primeImpl.row.end()), primeImpl.row.end());
 
-		Log{ primeImpl };
-		Log::print("\n\n");
+		Log::print<true>("----Prime Implicants----\n");
+		Log{ primeImpl, true };
+		Log::print<true>("\n\n");
 	}
 
 	std::deque<std::pair<std::intmax_t, std::size_t>> primeImplOccurance;
@@ -239,31 +240,31 @@ auto main() -> int
 			essentialPrimeImpl.emplace_back(bestRow);
 		}
 
-		Log::print("----Essential Prime Implicants----\n");
-		Log{ essentialPrimeImpl };
-		Log::print("\n\n");
+		Log::print<true>("----Essential Prime Implicants----\n");
+		Log{ essentialPrimeImpl, true };
+		Log::print<true>("\n\n");
 	}
 
 	{
-		Log::print("----Solution----\n");
+		Log::print<true>("----Solution----\n");
 		for (auto _row = essentialPrimeImpl.cbegin(), _rowEnd = essentialPrimeImpl.cend(); _row != _rowEnd; _row++) {
 			auto row = *_row;
 
 			if (_row != essentialPrimeImpl.cbegin())
-				Log::print(" + ");
+				Log::print<true>(" + ");
 
 			for (decltype(row->binary)::size_type i = 0, size = row->binary.size(); i < size; i++) {
 				const auto str = solutionSymbol + i;
 
 				switch (row->binary[i]) {
-				case 1: Log::print("%c", str);
+				case 1: Log::print<true>("%c", str);
 					break;
-				case 0: Log::print("%c%c", str, '\'');
+				case 0: Log::print<true>("%c%c", str, '\'');
 					break;
 				}
 			}
 		}
-		Log::print("\n\n");
+		Log::print<true>("\n\n");
 	}
 
 	return 0;
