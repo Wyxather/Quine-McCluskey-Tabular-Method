@@ -1,7 +1,7 @@
 #include "Table.h"
 #include "Log.h"
 
-auto operator+(const std::deque<intmax_t>& a, const std::deque<intmax_t>& b) noexcept
+auto operator+(const std::deque<std::intmax_t>& a, const std::deque<std::intmax_t>& b) noexcept
 {
 	auto r = a;
 	r.insert(r.end(), b.cbegin(), b.cend());
@@ -10,8 +10,8 @@ auto operator+(const std::deque<intmax_t>& a, const std::deque<intmax_t>& b) noe
 
 auto main() -> int
 {
-	std::deque<intmax_t> minTerm{ 0, 1, 9, 15, 24, 29, 30 };
-	std::deque<intmax_t> dontCare{ 8, 11, 31 };
+	std::deque<std::intmax_t> minTerm{ 0, 1, 9, 15, 24, 29, 30 };
+	std::deque<std::intmax_t> dontCare{ 8, 11, 31 };
 
 	// step 1
 	Table step1{ minTerm + dontCare };
