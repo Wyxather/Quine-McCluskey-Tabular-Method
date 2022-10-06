@@ -10,6 +10,7 @@ auto operator+(const std::deque<std::intmax_t>& a, const std::deque<std::intmax_
 
 auto main() -> int
 {
+	constexpr auto solutionSymbol{ 'A' };
 	std::deque<std::intmax_t> minTerm{ 0, 1, 9, 15, 24, 29, 30 };
 	std::deque<std::intmax_t> dontCare{ 8, 11, 31 };
 
@@ -252,7 +253,7 @@ auto main() -> int
 				Log::print(" + ");
 
 			for (decltype(row->binary)::size_type i = 0, size = row->binary.size(); i < size; i++) {
-				const auto str = 'A' + i;
+				const auto str = solutionSymbol + i;
 
 				switch (row->binary[i]) {
 				case 1: Log::print("%c", str);
